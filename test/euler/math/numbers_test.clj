@@ -18,3 +18,11 @@
                         1 2 false
                         20 5 true
                         23 5 false)))
+
+(deftest square-test
+  (are [n expected]
+    (= expected (square n))
+    0 0
+    1 1
+    10 100
+    -2 4))

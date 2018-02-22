@@ -10,3 +10,5 @@
   "Whether integer m divides integer n without a remainder"
   [m n] (zero? (mod m n)))
 
+(defn square
+  [n] (*' n n))
