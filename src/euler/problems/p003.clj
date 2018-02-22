@@ -5,8 +5,8 @@
 ;
 ; What is the largest prime factor of the number 600851475143 ?
 
-(def num 600851475143)
+(def number 600851475143)
 
-(peek (prime-factors num))
+(peek (prime-factors number))
 
 ; 6857
