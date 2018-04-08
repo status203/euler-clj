@@ -1,5 +1,5 @@
 (ns euler.problems.p009
-  (:require [euler.math.numbers :refer [square]]))
+              (:require [euler.math.numbers :refer [square]]))
 
 ; A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
 ; a2 + b2 = c2
@@ -16,3 +16,4 @@
                (+ (square a) (square b)))]
   (* a b c))
 
+; => (31875000)
