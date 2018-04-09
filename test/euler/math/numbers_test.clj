@@ -26,3 +26,25 @@
     1 1
     10 100
     -2 4))
+
+(deftest arithmetic-progression-test
+  (are [start delta expected]
+    (= expected (take 5 (arithmetic-progression start delta)))
+    1 1 [1 2 3 4 5 ]
+    4 3 [4 7 10 13 16]))
+
+(deftest triangular-numbers-test
+  (is (= [1 3 6 10 15] (take 5 (triangular-numbers)))))
+
+(deftest number-of-factors-test
+  (are [n expected]
+    (= expected (number-of-factors n))
+    1 1
+    2 2
+    3 2
+    6 4
+    10 4
+    15 4
+    21 4
+    28 6
+    ))

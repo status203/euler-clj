@@ -1,4 +1,5 @@
-(ns euler.math.numbers)
+(ns euler.math.numbers
+  (:require [euler.math.primes :as primes]))
 
 (defn fibonacci
   "Creates an infinite lazy Fibonacci sequence starting with [m n]"
@@ -12,3 +13,18 @@
 
 (defn square
   [n] (*' n n))
+
+(defn arithmetic-progression
+  "Infinite lazy sequence of an arithmetic progression"
+  [start delta] (lazy-seq (cons start (arithmetic-progression (+ start delta) delta))))
+
+(defn triangular-numbers
+  "Infinite lazy sequence of triangular numbers"
+  [] (reductions + (arithmetic-progression 1 1)))
+
+(defn number-of-factors
+  "How many factors n has; calculated from possible number of prime factor combinations"
+  [n] (->> (primes/prime-factors n)
+           frequencies
+           (map #(-> % second inc))
+           (apply *)))
