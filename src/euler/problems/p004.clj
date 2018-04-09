@@ -6,10 +6,11 @@
 
 ; Find the largest palindrome made from the product of two 3-digit numbers.
 
-(->> (for [m (range 100 1000)
-           n (range m 1000)]  (* m n))
-     (filter palindromic?)
-     (sort-by identity >)
-     first)
+(defn p4 []
+  (->> (for [m (range 100 1000)
+                   n (range m 1000)] (* m n))
+             (filter palindromic?)
+             (sort-by identity >)
+             first))
 
 ; => 906609

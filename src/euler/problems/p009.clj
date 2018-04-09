@@ -9,11 +9,12 @@
 ; There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 ; Find the product abc.
 
-(for [c (range 334 998)
-      b (range (quot (- 1000 c) 2) (- 1000 c))
-      a [(- 1000 c b)]
-      :when (= (square c)
-               (+ (square a) (square b)))]
-  (* a b c))
+(defn p9 []
+  (for [c (range 334 998)
+        b (range (quot (- 1000 c) 2) (- 1000 c))
+        a [(- 1000 c b)]
+        :when (= (square c)
+                 (+ (square a) (square b)))]
+    (* a b c)))
 
 ; => (31875000)

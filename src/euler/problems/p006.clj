@@ -13,12 +13,13 @@
 ; Find the difference between the sum of the squares of the first one hundred
 ; natural numbers and the square of the sum.
 
-(Math/abs
-  (- (->> (range 1, 101)
-          (map square)
-          (reduce +))
-     (->> (range 1, 101)
-          (reduce +)
-          square)))
+(defn p6 []
+  (Math/abs
+          (- (->> (range 1, 101)
+                  (map square)
+                  (reduce +))
+             (->> (range 1, 101)
+                  (reduce +)
+                  square))))
 
 ; => 25164150

@@ -9,10 +9,11 @@
 ; numbers from 1 to 20?
 
 
-(->> (range 1 21)
-     (mapcat (comp frequencies prime-factors))
-     (reduce #(apply upsert-frequency %1 %2) {})            ; %2 is [value freq]
-     expand-frequencies
-     (reduce *))
+(defn p5 []
+  (->> (range 1 21)
+             (mapcat (comp frequencies prime-factors))
+             (reduce #(apply upsert-frequency %1 %2) {})    ; %2 is [value freq]
+             expand-frequencies
+             (reduce *)))
 
 ; => 232792560

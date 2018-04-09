@@ -5,7 +5,8 @@
 
 ; Find the sum of all the primes below two million.
 
-(apply +
-       (take-while #(< % 2000000) (primes)))
+(defn p10 []
+  (apply +
+         (take-while #(< % 2000000) (primes))))
 
 ; => 142913828922

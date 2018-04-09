@@ -6,4 +6,5 @@
 ;
 ; What is the 10 001st prime number?
 
-(first (drop 10000 (primes)))
+(defn p7 []
+  (first (drop 10000 (primes))))

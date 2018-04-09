@@ -50,10 +50,11 @@
 
 (def squares (apply concat (sgrid/partition 4 1 4 1 grid)))
 
-(apply max (for [m masks s squares]
-       (->> (sofs/map #(and %1 %2) m s)                     ; mask squares
-            flatten                                         ; no longer need 2d
-            (filter identity)                               ; keep only masked numbers
-            (apply *))))                                    ; do the multiplication
+(defn p11 []
+  (apply max (for [m masks s squares]
+               (->> (sofs/map #(and %1 %2) m s)             ; mask squares
+                    flatten                                 ; no longer need 2d
+                    (filter identity)                       ; keep only masked numbers
+                    (apply *)))))                           ; do the multiplication
 
 ; => 70600674

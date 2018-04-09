@@ -29,10 +29,11 @@
     "05886116467109405077541002256983155200055935729725"
     "71636269561882670428252483600823257530420752963450"))
 
-(->> (seq p8-text)
-     (map #(Integer/parseInt (str %)))
-     (partition 13 1)
-     (map #(reduce * %))
-     (reduce max))
+(defn p8 []
+  (->> (seq p8-text)
+       (map #(Integer/parseInt (str %)))
+       (partition 13 1)
+       (map #(reduce * %))
+       (reduce max)))
 
 ; => 23514624000

@@ -7,6 +7,7 @@
 
 (def number 600851475143)
 
-(peek (prime-factors number))
+(defn p3 []
+  (peek (prime-factors number)))
 
 ; 6857

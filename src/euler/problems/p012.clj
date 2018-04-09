@@ -22,8 +22,9 @@
 ; What is the value of the first triangle number to have over five hundred
 ; divisors?
 
-(->> (triangular-numbers)
-     (filter #(> (number-of-factors %) 500))
-     first)
+(defn p12 []
+  (->> (triangular-numbers)
+       (filter #(> (number-of-factors %) 500))
+       first))
 
 ; => 76576500

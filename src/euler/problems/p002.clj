@@ -11,8 +11,9 @@
 
 
 (def up-to 4000000)
-(->> (take-while #(< % up-to) (fibonacci))
-     (filter even?)
-     (apply +))
+(defn p2 []
+  (->> (take-while #(< % up-to) (fibonacci))
+             (filter even?)
+             (apply +)))
 
 ; 4613732
