@@ -26,13 +26,14 @@
 
 (defn prime-factors
   "Returns a vector of prime factors of n"
-  [n]
-  (loop [m n
-         factors []
-         possible-factors (primes)]
-    (if (<= m 1)
-      factors
-      (let [[factor & rest-factors] possible-factors]
-        (if (divides? m factor)
-          (recur (/ m factor) (conj factors factor) possible-factors)
-          (recur m factors rest-factors))))))
+  ([n] (prime-factors n (primes)))
+  ([n possible-factors]
+   (loop [m n
+          factors []
+          possible-factors possible-factors]
+     (if (<= m 1)
+       factors
+       (let [[factor & rest-factors] possible-factors]
+         (if (divides? m factor)
+           (recur (/ m factor) (conj factors factor) possible-factors)
+           (recur m factors rest-factors)))))))

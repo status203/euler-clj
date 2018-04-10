@@ -1,5 +1,5 @@
 (ns euler.math.numbers
-  (:require [euler.math.primes :as primes]))
+  (:require [euler.math.primes :refer [primes prime-factors]]))
 
 (defn fibonacci
   "Creates an infinite lazy Fibonacci sequence starting with [m n]"
@@ -24,7 +24,8 @@
 
 (defn number-of-factors
   "How many factors n has; calculated from possible number of prime factor combinations"
-  [n] (->> (primes/prime-factors n)
-           frequencies
-           (map #(-> % second inc))
-           (apply *)))
+  ([n] (number-of-factors n (primes)))
+  ([n possible-factors] (->> (prime-factors n possible-factors)
+                             frequencies
+                             (map #(-> % second inc))
+                             (apply *))))
