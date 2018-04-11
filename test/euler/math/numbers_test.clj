@@ -48,3 +48,11 @@
     21 4
     28 6
     ))
+
+(deftest factorial-test
+  (are [n expected]
+    (= expected (factorial n))
+    1 1
+    2 2
+    3 6
+    6 720))
