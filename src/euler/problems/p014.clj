@@ -17,8 +17,8 @@
 ; NOTE: Once the chain starts the terms are allowed to go above one million.
 
 (defn collatz-step [n]
-  (if (zero? (mod n 2))
-    (/ n 2)
+  (if (even? n)
+    (bit-shift-right n 1)                                   ; divide by 2
     (inc (* n 3))))
 
 (def collatz-length
