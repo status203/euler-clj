@@ -23,10 +23,10 @@
 ; What is the value of the first triangle number to have over five hundred
 ; divisors?
 
-(def primes (euler.math.primes/primes))
 (defn p12 []
-  (->> (triangular-numbers)
-       (filter #(> (number-of-factors % primes) 500))
-       first))
+  (let [primes (euler.math.primes/primes)]
+    (->> (triangular-numbers)
+         (filter #(> (number-of-factors % primes) 500))
+         first)))
 
 ; => 76576500
