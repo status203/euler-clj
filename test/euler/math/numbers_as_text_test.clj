@@ -10,3 +10,31 @@
                     12 false
                     1234547890 false
                     12345678987654321 true))
+
+(deftest number->triplets-test
+  (are [n expected] (= expected (number->triplets n))
+    0 []
+    1 [1]
+    10 [10]
+    111 [111]
+    999 [999]
+    123456789 [789 456 123]))
+
+(deftest number-in-words-test
+  (are [n expected]
+    (= expected (number-in-words n))
+    1 "one" 5 "five" 9 "nine"
+    10 "ten" 15 "fifteen" 19 "nineteen"
+    20 "twenty", 21 "twenty-one", 25 "twenty-five" 29 "twenty-nine"
+    99 "ninety-nine"
+    100 "one hundred"
+    101 "one hundred and one"
+    111 "one hundred and eleven"
+    320 "three hundred and twenty"
+    999 "nine hundred and ninety-nine"
+    1000 "one thousand"
+    1001 "one thousand and one"
+    300000002 "three hundred million and two"
+    500000000 "five hundred million"
+    123456789 "one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
+    ))
