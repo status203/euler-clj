@@ -38,3 +38,14 @@
     500000000 "five hundred million"
     123456789 "one hundred and twenty-three million four hundred and fifty-six thousand seven hundred and eighty-nine"
     ))
+
+(deftest sum-of-digits-test
+  (are [n expected]
+    (= expected (sum-of-digits n))
+    0 0
+    1 1
+    9 9
+    10 1
+    98 17
+    100 1
+    1234567890 45))

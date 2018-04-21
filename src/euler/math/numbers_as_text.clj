@@ -5,6 +5,13 @@
   [n] (let [s (str n)]
         (= s (apply str (reverse s)))))
 
+(defn sum-of-digits
+  "Returns the sum of the (decimal) digits of n"
+  ([n] (sum-of-digits n 0))
+  ([n acc] (if (zero? n)
+             acc                                            ; Base case
+             (recur (quot n 10) (+ acc (mod n 10))))))
+
 (def unit-words [nil "one" "two" "three" "four" "five" "six" "seven" "eight", "nine"])
 (def teens-words ["ten" "eleven" "twelve" "thirteen" "fourteen" "fifteen"
                   "sixteen" "seventeen" "eighteen" "nineteen"])
