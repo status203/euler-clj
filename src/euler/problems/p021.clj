@@ -1,5 +1,6 @@
 (ns euler.problems.p021
-  (:require [euler.math.numbers :refer [amicable]]))
+  (:require [euler.math.numbers :refer [amicable]]
+            [euler.math.primes :refer [primes]]))
 
 ; Amicable numbers
 ; Problem 21
@@ -17,8 +18,9 @@
 ; Evaluate the sum of all the amicable numbers under 10000
 
 (defn p021 []
-  (->> (for [n (range 1 10001) :when (amicable n)] n)
-       set
-       (reduce +)))
+  (let [possible-factors (primes)]
+    (->> (for [n (range 1 10001) :when (amicable n possible-factors)] n)
+         set
+         (reduce +))))
 
 ; => 31626

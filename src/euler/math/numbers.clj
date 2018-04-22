@@ -6,7 +6,7 @@
   "Creates an infinite lazy Fibonacci sequence starting with [m n]"
   ([] (fibonacci 0 1))
   ([m n] (lazy-seq (cons m
-                   (fibonacci n (+' m n))))))
+                         (fibonacci n (+' m n))))))
 
 (defn divides?
   "Whether integer m divides integer n without a remainder"
@@ -33,19 +33,20 @@
 
 (defn factors
   "Returns a set of the factors of n"
-  [n] (if (zero? n)
-        #{}
-        (->> n
-             prime-factors
-             combo/subsets
-             (map #(apply * %))
-             set)))
+  ([n] (factors n (primes)))
+  ([n possible-factors] (if (zero? n)
+                          #{}
+                          (->> (prime-factors n possible-factors)
+                               combo/subsets
+                               (map #(apply * %))
+                               set))))
 
 (defn proper-factors
   "Returns a set of the proper factors of n"
-  [n] (-> n
-           factors
-           (disj n)))
+  ([n] (proper-factors n (primes)))
+  ([n possible-factors] (-> n
+                            (factors possible-factors)
+                            (disj n))))
 
 (defn factorial
   "The factorial of n, i.e n * n-1 * n-2 ... * 1"
@@ -57,7 +58,8 @@
 (defn amicable
   "If n is amicable returns a vector of n and it's partner in increasing order,
    otherwise returns nil"
-  [n]
-  (let [n-partner (->> n proper-factors (reduce +))
-        n-partner-partner (->> n-partner proper-factors (reduce +))]
-    (if (and (= n n-partner-partner) (not= n n-partner)) (sort [n n-partner]))))
+  ([n] (amicable n (primes)))
+  ([n possible-factors]
+   (let [n-partner (->> (proper-factors n possible-factors) (reduce +))
+         n-partner-partner (->> (proper-factors n-partner possible-factors) (reduce +))]
+     (if (and (= n n-partner-partner) (not= n n-partner)) (sort [n n-partner])))))
