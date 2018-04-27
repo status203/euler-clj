@@ -1,6 +1,5 @@
 (ns euler.problems.p021
-  (:require [euler.math.numbers :refer [amicable]]
-            [euler.math.primes :refer [primes]]))
+  (:require [euler.math.factors :refer [primes amicable]]))
 
 ; Amicable numbers
 ; Problem 21

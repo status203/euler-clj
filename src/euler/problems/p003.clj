@@ -1,5 +1,5 @@
 (ns euler.problems.p003
-  (:require [euler.math.primes :refer [prime-factors]]))
+  (:require [euler.math.factors :refer [prime-factors]]))
 
 ; The prime factors of 13195 are 5, 7, 13 and 29.
 ;

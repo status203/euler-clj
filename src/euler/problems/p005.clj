@@ -1,5 +1,5 @@
 (ns euler.problems.p005
-  (:require [euler.math.primes :refer [prime-factors]]
+  (:require [euler.math.factors :refer [prime-factors]]
             [euler.frequencies :refer [upsert-frequency expand-frequencies]]))
 
 ; 2520 is the smallest number that can be divided by each of the numbers from

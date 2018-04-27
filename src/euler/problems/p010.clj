@@ -1,5 +1,5 @@
 (ns euler.problems.p010
-  (:require [euler.math.primes :refer [primes]]))
+  (:require [euler.math.factors :refer [primes]]))
 
 ; The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
 

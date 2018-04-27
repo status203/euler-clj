@@ -1,6 +1,4 @@
-(ns euler.math.numbers
-  (:require [euler.math.primes :refer [primes prime-factors]]
-            [clojure.math.combinatorics :as combo]))
+(ns euler.math.numbers)
 
 (defn fibonacci
   "Creates an infinite lazy Fibonacci sequence starting with [m n]"
@@ -23,43 +21,9 @@
   "Infinite lazy sequence of triangular numbers"
   [] (reductions + (arithmetic-progression 1 1)))
 
-(defn number-of-factors
-  "How many factors n has; calculated from possible number of prime factor combinations"
-  ([n] (number-of-factors n (primes)))
-  ([n possible-factors] (->> (prime-factors n possible-factors)
-                             frequencies
-                             (map #(-> % second inc))
-                             (apply *))))
-
-(defn factors
-  "Returns a set of the factors of n"
-  ([n] (factors n (primes)))
-  ([n possible-factors] (if (zero? n)
-                          #{}
-                          (->> (prime-factors n possible-factors)
-                               combo/subsets
-                               (map #(apply * %))
-                               set))))
-
-(defn proper-factors
-  "Returns a set of the proper factors of n"
-  ([n] (proper-factors n (primes)))
-  ([n possible-factors] (-> n
-                            (factors possible-factors)
-                            (disj n))))
-
 (defn factorial
   "The factorial of n, i.e n * n-1 * n-2 ... * 1"
   ([n] (factorial n 1))
   ([n total] (if (= n 1)
                total
                (recur (dec n) (*' total n)))))
-
-(defn amicable
-  "If n is amicable returns a vector of n and it's partner in increasing order,
-   otherwise returns nil"
-  ([n] (amicable n (primes)))
-  ([n possible-factors]
-   (let [n-partner (->> (proper-factors n possible-factors) (reduce +))
-         n-partner-partner (->> (proper-factors n-partner possible-factors) (reduce +))]
-     (if (and (= n n-partner-partner) (not= n n-partner)) (sort [n n-partner])))))
