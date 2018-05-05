@@ -1,10 +1,6 @@
 (ns euler.math.factors
-  (:require [clojure.math.combinatorics :as combo]))
-
-; Cannot include numbers ns as numbers includes primes.
-(defn- divides?
-  "Whether integer m divides integer n without a remainder"
-  [m n] (zero? (mod m n)))
+  (:require [clojure.math.combinatorics :as combo]
+            [euler.math.numbers :refer [divides?]]))
 
 (defn naive-prime?
   "Checks whether n is prime by seeing if all integers lower or equal to n
